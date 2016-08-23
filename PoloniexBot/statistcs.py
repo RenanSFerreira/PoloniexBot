@@ -1,4 +1,4 @@
-#FlipPredictor
+﻿#FlipPredictor
 #A coin is drawn at random from a bag of coins of varying probabilities
 #Each coin has the same chance of being drawn
 #Your class FlipPredictor will be initialized with a list of the probability of 
@@ -17,10 +17,10 @@ class FlipPredictor(object):
     def pheads(self):        
         #Write a function that returns 
         #the probability of the next flip being heads 
-        p = 1;
+        p = 0;
         i = 0
         while i<len(self.coins):
-            p = p*self.coins[i]*self.probs[i]
+            p = p + (self.coins[i]*self.probs[i])
             i+=1
         return p
 
@@ -28,13 +28,14 @@ class FlipPredictor(object):
         #Write a function the updates
         #the probabilities of flipping each coin
         i = 0
+        pHead = self.pheads()
         if result == 'H':    
             while i<len(self.coins):
-                self.probs[i] = self.coins[i] * self.probs[i] / self.pheads()
+                self.probs[i] = self.coins[i] * self.probs[i] / pHead
                 i+=1
         else:
            while i<len(self.coins):
-                self.probs[i] = (1 - self.coins[i]) * self.probs[i] / self.pheads()
+                self.probs[i] = (1 - self.coins[i]) * self.probs[i] / (1 - pHead)
                 i+=1 
             
 
