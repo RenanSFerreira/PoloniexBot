@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c1bd41cd-07d8-4e18-bc11-75ff7ab296dc</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>statistcs.py</StartupFile>
+    <StartupFile>statistcs3.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -31,6 +31,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="statistcs.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="statistcs2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="statistcs3.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
