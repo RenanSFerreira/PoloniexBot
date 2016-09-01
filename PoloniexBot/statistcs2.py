@@ -16,21 +16,22 @@ print(median(data1))
 
 data1=[1,2,5,10,-20,5,5]
 def mode(data):
-    m
-    c
+    m = 0
+    c = 0
     for i in range(len(data)):
         if data.count(data[i]) > c:
             c = data.count(data[i])
             m = data[i]
     return m    
 
-print(median(mode))
+print(mode(data1))
 
 data3=[13.04, 1.32, 22.65, 17.44, 29.54, 23.22, 17.65, 10.12, 26.73, 16.43]
 
 def variance(data):
     mu = mean(data)
     return(mean([(x-mu)**2 for x in data]))
+
 
 def stddev(data):
     return sqrt(variance(data))

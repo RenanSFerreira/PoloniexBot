@@ -171,14 +171,14 @@ class poloniex:
     def transferBalance(self,currency,amount,fromAccount,toAccount):
         return self.api_query('transferBalance',{"currency":currency, "amount":amount, "fromAccount":fromAccount, "toAccount":toAccount, "confirmed":1})
 
-#APIKey	=	'S317W2CL-C5L5VNVZ-ZPBA2LEV-32X7PYT8'
-#Secret	=	'f4747bdb7da31dff15beca3888303da276afcf1c40c70931969074494a7ee9a80de7eb333f65f1baf486db3b9dba4b154a868d15653d348ba8b73fbd86ac2282'
+APIKey	=	''
+Secret	=	''
 
-script_dir = os.path.dirname(__file__)
-config_rel_path = "config.txt"
-config = open(os.path.join(script_dir, config_rel_path))
-APIKey = config.readline().replace('\n','');
-Secret = config.readline();
+#script_dir = os.path.dirname(__file__)
+#config_rel_path = "config.txt"
+#config = open(os.path.join(script_dir, config_rel_path))
+#APIKey = config.readline().replace('\n','');
+#Secret = config.readline();
 
 
 polo = poloniex(APIKey, Secret)
