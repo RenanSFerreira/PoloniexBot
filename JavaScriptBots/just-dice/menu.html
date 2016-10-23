@@ -1,0 +1,96 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <fieldset>
+        <div class="row">
+            <p class="llabel">cashout</p>
+            <input id="bot_cashout" tabindex="1" value="10" type="number">
+            <p class="rlabel">x</p>
+        </div>
+        <div class="row">
+            <p class="llabel">incOnLoss</p>
+            <input id="bot_increaseOnLoss" tabindex="3" value="1.113">
+            <p class="rlabel">x</p>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="row">
+            <p class="llabel">Initial Bet</p>
+            <input id="bot_balancePercentage" tabindex="1" value="0.01">
+            <p class="rlabel">%</p>
+        </div>
+        <div class="row">
+            <p class="llabel">bet Limit</p>
+            <input id="bot_betLimit" tabindex="1" value="50">
+            <p class="rlabel">%</p>
+        </div>
+    </fieldset>
+    <div class="big">
+        <div class="fleft">
+            <div class="button_group">
+                <div class="button_inner_group">
+                    <button id="bot_update" class="play">
+                        <b>Update Param</b>
+                        <div id="b_update" class="target"></div>
+                    </button>
+                </div>
+                <div class="button_inner_group">
+                    <button id="bot_play" class="play">
+                        <b>Bot Play</b>
+                        <div id="b_play" class="target"></div>
+                    </button>
+                </div>
+                <div class="button_inner_group">
+                    <button id="bot_stop" class="play invalid">
+                        <b>Bot Stop</b>
+                        <div id="b_stop" class="target"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chatstat">
+        <table>
+            <tbody>
+                <tr>
+                    <th></th>
+                    <th>Prob of Win</th>
+                    <th>Games to Lose</th>
+                    <th>Loss Count</th>
+                    <th>Max Losses</th>
+                    <th>Avg Losses</th>
+                    <th>Balance</th>
+                    <th>Profit</th>
+                    <th>Last Big Loss</th>
+                </tr>
+                <tr>
+                    <th>Statistics</th>
+                    <td><span class="bot_probWin">99%</span></td>
+                    <td><span class="Bot_gamesToLose">80</span></td>
+                    <td><span class="Bot_lossCount">80</span></td>
+                    <td><span class="Bot_maxLosses">80</span></td>
+                    <td><span class="Bot_avgLosses">80</span></td>
+                    <td><span class="Bot_balance">80</span></td>
+                    <td><span class="Bot_Profit">80</span></td>
+                    <td><span class="Bot_LastBigLoss">80</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+var cashout = 100;
+var increaseOnLoss = 1.0108;
+var initialBalance = parseFloat($("#pct_balance").val());
+var balancePercentage = 0.0001;
+var initialBet = initialBalance * balancePercentage;
+var bet = initialBet;
+var totalLoss = 0;
+var betId = 0;
