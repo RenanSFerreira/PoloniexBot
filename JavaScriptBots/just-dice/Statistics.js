@@ -55,11 +55,13 @@ function updateAvgLosses(avgLosses, lossesCount, lastLossCount, win){
     return avgLosses;
 }
 
-function calculateInitialStatistics(){
+function calculateInitialStatistics(balance, initialBet, cashOut) {
     bot_gamesToLose = gamesToLose(balance, initialBet);
     $("#bot_gamesToLose").val(bot_gamesToLose);
-    bot_gamesToLose = totalWinProb(cashOut, gameCount);
-    $("#bot_gamesToLose").val(bot_gamesToLose);
+    bot_probWin = totalWinProb(cashOut, bot_gamesToLose);
+    $("#bot_probWin").val(bot_probWin);
+    bot_Profit = 0;
+    bot_InitialProfit = parseFloat($("#myprofit").val());
 }
 
 function calculateGameStatistics(){ 
@@ -73,6 +75,7 @@ function calculateGameStatistics(){
     $("#bot_LastBigLoss").val(bot_LastBigLoss);
     bot_lossCount = updateLossCount(bot_lossCount, bot_win);
     $("#bot_lossCount").val(bot_lossCount);
-    bot_balance
-    bot_Profit
+    bot_balance = parseFloat($("#pct_balance").val());
+    $("#bot_balance").val(bot_balance);
+    bot_Profit = parseFloat($("#myprofit").val()) - bot_InitialProfit;
 }

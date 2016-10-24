@@ -3,7 +3,7 @@ $(".wrapper").prepend("<fieldset> <div class='row'> <p class='llabel'>cashout</p
 
 var cashOut = 5;
 var increaseOnLoss = 1.25;
-var balancePercentage = 0.01;
+var initialBet = 0.01;
 var betLimit = 0.5;
 var intervalId = -1;
 var canStop = false;
@@ -12,8 +12,8 @@ var initialBalance = parseFloat($("#pct_balance").val());
 
 $("#bot_update").on("click", function () {
     cashOut = parseFloat($("#bot_cashout").val());
-    increaseOnLoss = parseFloat($("#incOnLoss").val());
-    balancePercentage = parseFloat($("#bot_balancePercentage").val());
+    increaseOnLoss = parseFloat($("#bot_increaseOnLoss").val());
+    initialBet = parseFloat($("#bot_initialBet").val());
     betLimit = parseFloat($("#bot_betLimit").val());
 });
 
@@ -31,4 +31,6 @@ function doWork() {
     //para a execução se clicar em stop e tiver ganhado a última partida
     if (stop && canStop) 
         clearInterval(intervalId);
+    else
+
 }
