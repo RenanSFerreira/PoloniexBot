@@ -77,12 +77,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bustabit\main.js" />
-    <Content Include="just-dice\executar.js" />
+    <Content Include="just-dice\execute.js" />
     <Content Include="just-dice\just-dice.html" />
     <Content Include="just-dice\main.js" />
     <Content Include="just-dice\menu.html" />
     <Content Include="just-dice\script_justdice3.js" />
-    <Content Include="just-dice\Statistics.js" />
+    <Content Include="just-dice\statistics.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

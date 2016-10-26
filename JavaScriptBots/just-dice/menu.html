@@ -1,16 +1,8 @@
-﻿
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="utf-8" />
-</head>
-<body>
+﻿<!-- use http://removelinebreaks.net/ to remove line breaks -->
     <fieldset>
         <div class="row">
-            <p class="llabel">cashout</p>
-            <input id="bot_cashout" tabindex="1" value="10" type="number">
+            <p class="llabel">cashOut</p>
+            <input id="bot_cashOut" tabindex="1" value="10" type="number">
             <p class="rlabel">x</p>
         </div>
         <div class="row">
@@ -22,7 +14,7 @@
     <fieldset>
         <div class="row">
             <p class="llabel">Initial Bet</p>
-            <input id="bot_initialBet" tabindex="1" value="0.01">
+            <input id="bot_betBalancePercentage" tabindex="1" value="0.00001">
             <p class="rlabel">%</p>
         </div>
         <div class="row">
@@ -80,19 +72,8 @@
                     <td><span class="bot_avgLosses">0</span></td>
                     <td><span class="bot_LastBigLoss">0</span></td>
                     <td><span class="bot_balance">0</span></td>
-                    <td><span class="bot_Profit">0</span></td>
+                    <td><span class="bot_profit">0</span></td>
                 </tr>
             </tbody>
         </table>
     </div>
-</body>
-</html>
-
-var cashout = 100;
-var increaseOnLoss = 1.0108;
-var initialBalance = parseFloat($("#pct_balance").val());
-var balancePercentage = 0.0001;
-var initialBet = initialBalance * balancePercentage;
-var bet = initialBet;
-var totalLoss = 0;
-var betId = 0;
