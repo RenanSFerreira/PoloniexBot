@@ -409,3 +409,92 @@ engine.on('game_crash', function (data) {
         maxBalance = engine.getBalance();
     }
 });
+
+
+
+
+
+
+
+
+var balancePercentage = 0.000055;
+var lastValue = 0;
+var initialBet = engine.getBalance() * balancePercentage;
+var cashout = 990;
+var increaseLoss = 1.1112;
+var bet = initialBet;
+var maxBalance = engine.getBalance();
+var betCount = 0;
+var maxBetCount = 11;
+
+var stopCount = 0;
+var stopTimes = 0;
+var stopMultiplier = 10;
+
+engine.on('game_starting', function (info) {
+    if (betCount < maxBetCount && engine.getBalance() - bet > maxBalance / 2) {
+        engine.placeBet(parseInt(bet / 100) * 100, cashout, false);
+        console.log('Betting : ' + bet);
+        betCount = betCount + 1;
+    }
+    else {
+        if (stopCount == 0) {
+            if (stopTimes == 0) {
+                stopCount = parseInt(Math.random() * stopMultiplier) * (stopTimes + 1) + 5;
+                console.log('stopbet:' + stopCount);
+            } else if (stopTimes == 1) {
+                stopCount = parseInt(Math.random() * stopMultiplier) * (stopTimes + 1) + 10;
+                console.log('stopbet:' + stopCount);
+            } else if (stopTimes == 2) {
+                stopCount = parseInt(Math.random() * stopMultiplier) * (stopTimes + 1) + 10;
+                console.log('stopbet:' + stopCount);
+            } else if (stopTimes == 3) {
+                stopCount = 60;
+                console.log('stopbet:' + stopCount);
+            } else if (stopTimes == 4) {
+                stopCount = parseInt(Math.random() * stopMultiplier) * (stopTimes - 3) + 10;
+                console.log('stopbet:' + stopCount);
+            } else if (stopTimes == 5) {
+                stopCount = parseInt(Math.random() * stopMultiplier) * (stopTimes - 3) + 10;
+                console.log('stopbet:' + stopCount);
+            } else if (stopTimes == 6) {
+                stopCount = parseInt(Math.random() * stopMultiplier) * (stopTimes - 3) + 10;
+                console.log('stopbet:' + stopCount);
+            } else if (stopTimes == 7) {
+                stopCount = 60;
+                console.log('stopbet:' + stopCount);
+            } else if (stopTimes == 8) {
+                stopCount = 60;
+                console.log('stopbet:' + stopCount);
+            }
+            stopTimes = stopTimes + 1;
+        }
+        else {
+            stopCount = stopCount - 1;
+            if (stopCount == 0) {
+                betCount = 0;
+            }
+        }
+        console.log('Not betting!');
+    }
+});
+
+engine.on('game_crash', function (data) {
+    lastValue = data.game_crash;
+    console.log('Game crashed at ', lastValue);
+    if (engine.lastGamePlayed()) {
+        if (lastValue >= cashout) {
+            betCount = 0;
+            stopTimes = 0;
+            bet = engine.getBalance() * balancePercentage;
+
+            console.log('Won | Balance:' + engine.getBalance());
+        } else {
+            bet = bet * increaseLoss;
+            console.log('Lost | Balance:' + engine.getBalance());
+        }
+    }
+    if (engine.getBalance() > maxBalance) {
+        maxBalance = engine.getBalance();
+    }
+});
